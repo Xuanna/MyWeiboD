@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.chichi.ccwbodemo" >
+    package="com.example.chichi.ccwbodemo">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <meta-data
+        android:name="2321418893"
+        android:value="b816046ccd66e5aa0ca020973193ff8c"></meta-data>
 
     <application
+        android:name="com.example.xuchichi.ccwbodemo.Myapplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="com.example.xuchichi.ccwbodemo.MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name="com.example.xuchichi.ccwbodemo.MainActivity">
+        </activity>
+        <activity
+            android:name="com.example.xuchichi.ccwbodemo.WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.xuchichi.ccwbodemo.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
