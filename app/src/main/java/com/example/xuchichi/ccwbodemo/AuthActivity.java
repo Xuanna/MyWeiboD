@@ -14,12 +14,12 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import java.util.Map;
 
 public class AuthActivity extends AppCompatActivity {
-    UMShareAPI mShareAPI;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
-        mShareAPI.getPlatformInfo(this, SHARE_MEDIA.SINA, umAuthListener);
+        UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, umAuthListener);
     }
     private UMAuthListener umAuthListener = new UMAuthListener() {
         @Override
