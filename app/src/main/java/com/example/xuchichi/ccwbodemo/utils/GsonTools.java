@@ -15,9 +15,9 @@ public class GsonTools {
         String str=gson.toJson(object);
         return  str;
     }
-    public static Object stringToObject(String strJson){
+    public static <T> T stringToObject(String strJson,Class<T> tClass){
         Gson gson=new Gson();
-        Type type=new TypeToken<Object>(){}.getType();
-       return gson.fromJson(strJson,type);
+        T rsp =   gson.fromJson(strJson, tClass);
+       return rsp;
     }
 }

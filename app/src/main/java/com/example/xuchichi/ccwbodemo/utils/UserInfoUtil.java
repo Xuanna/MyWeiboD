@@ -22,7 +22,6 @@ public class UserInfoUtil {
      */
     public static UserInfo getUserInfo(){
         String str= Myapplication.getInstance().perferencesUtil.getShareString("SAVE_USER");
-        UserInfo userInfo= (UserInfo) GsonTools.stringToObject(str);
-        return  userInfo;
+        return  GsonTools.stringToObject(str,UserInfo.class);
     }
 }
