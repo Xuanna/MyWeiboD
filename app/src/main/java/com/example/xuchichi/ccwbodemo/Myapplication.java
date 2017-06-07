@@ -40,7 +40,7 @@ public class Myapplication extends MultiDexApplication{
         myapplication=this;
     }
     {
-        PlatformConfig.setSinaWeibo("2321418893","b816046ccd66e5aa0ca020973193ff8c","http://sns.xuchichi.com/sina2/callback");
+        PlatformConfig.setSinaWeibo("2321418893","b816046ccd66e5aa0ca020973193ff8c","http://www.baidu.com/");
     }
     public static  Myapplication getInstance() {
         return myapplication;

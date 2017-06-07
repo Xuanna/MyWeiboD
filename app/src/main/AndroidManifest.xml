@@ -14,8 +14,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <meta-data
-        android:name="2321418893"
-        android:value="b816046ccd66e5aa0ca020973193ff8c" />
+        android:name="UMENG_APPKEY"
+        android:value="59351c58f5ade467f1001154" />
+
 
     <application
         android:name="com.example.xuchichi.ccwbodemo.Myapplication"
