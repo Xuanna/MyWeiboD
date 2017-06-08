@@ -63,6 +63,7 @@ public class MainActivity extends BaseActivity {
                 clickIndex(1);
                 break;
             case R.id.center:
+
                 break;
             case R.id.ll_find:
                 clickIndex(2);

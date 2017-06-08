@@ -9,13 +9,13 @@
     </style>
     <!--圆角图片-->
     <declare-styleable name="CircleImageView">
-    <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_width" format="dimension" />
 
-    <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_color" format="color" />
 
-    <attr name="civ_border_overlay" format="boolean"/>
+        <attr name="civ_border_overlay" format="boolean" />
 
-    <attr name="civ_fill_color" format="color"/>
+        <attr name="civ_fill_color" format="color" />
     </declare-styleable>
 
     <style name="HoGreyLine">
@@ -23,9 +23,19 @@
         <item name="android:layout_height">0.5dp</item>
         <item name="android:background">@color/text_grey</item>
     </style>
+
     <style name="HoGreyLine2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.5dp</item>
         <item name="android:background">@color/common_bg_grey</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

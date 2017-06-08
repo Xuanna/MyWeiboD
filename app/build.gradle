@@ -38,10 +38,11 @@ dependencies {
     compile files('libs/SocialSDK_Sina_Simplify.jar')
     compile files('libs/umeng_social_shareview.jar')
     compile files('libs/gson-2.3.jar')
+    compile files('libs/okhttp-3.7.0.jar')
+    compile files('libs/okio-1.12.0.jar')
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.google.android.gms:play-services:10.0.1'
-    compile files('libs/okhttp-3.7.0.jar')
-    compile files('libs/okio-1.12.0.jar')
+    compile 'com.android.support:design:25.3.0'
 }

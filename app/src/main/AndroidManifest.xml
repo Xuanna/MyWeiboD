@@ -11,12 +11,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <meta-data
         android:name="UMENG_APPKEY"
         android:value="59351c58f5ade467f1001154" />
-
 
     <application
         android:name="com.example.xuchichi.ccwbodemo.Myapplication"
@@ -25,8 +24,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.xuchichi.ccwbodemo.MainActivity">
-        </activity>
+        <activity android:name="com.example.xuchichi.ccwbodemo.MainActivity"></activity>
         <activity
             android:name="com.example.xuchichi.ccwbodemo.WBShareActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -44,7 +42,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.xuchichi.ccwbodemo.activity.SettingActivity"/>
+        <activity android:name="com.example.xuchichi.ccwbodemo.activity.SettingActivity" />
+        <activity
+            android:name="com.example.xuchichi.ccwbodemo.activity.MainCenterActivity"
+            android:label="@string/title_activity_main_center"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

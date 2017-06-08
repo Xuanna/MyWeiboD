@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_grey"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+   <View style="@style/HoGreyLine"></View>
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:background="@drawable/iv_evaluate_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+</RelativeLayout>
