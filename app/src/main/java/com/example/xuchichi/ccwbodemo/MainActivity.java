@@ -1,5 +1,6 @@
 package com.example.xuchichi.ccwbodemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.chichi.ccwbodemo.R;
+import com.example.xuchichi.ccwbodemo.activity.MainCenterActivity;
 import com.example.xuchichi.ccwbodemo.adapter.ViewpagerAdapter;
 import com.example.xuchichi.ccwbodemo.base.BaseActivity;
 import com.example.xuchichi.ccwbodemo.base.BaseFragment;
@@ -63,7 +65,7 @@ public class MainActivity extends BaseActivity {
                 clickIndex(1);
                 break;
             case R.id.center:
-
+                startActivity(new Intent(this, MainCenterActivity.class));
                 break;
             case R.id.ll_find:
                 clickIndex(2);

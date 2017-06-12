@@ -44,9 +44,7 @@
         </activity>
         <activity android:name="com.example.xuchichi.ccwbodemo.activity.SettingActivity" />
         <activity
-            android:name="com.example.xuchichi.ccwbodemo.activity.MainCenterActivity"
-            android:label="@string/title_activity_main_center"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name="com.example.xuchichi.ccwbodemo.activity.MainCenterActivity" />
     </application>
 
 </manifest>
