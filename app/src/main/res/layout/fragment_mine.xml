@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/common_bg_grey"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/common_bg_grey"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -41,11 +42,12 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
-    <View  style="@style/HoGreyLine2"/>
+
+    <View style="@style/HoGreyLine2" />
 
 
     <ScrollView
-        android:layout_marginBottom="10dp"
+        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -56,87 +58,97 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:background="@color/white">
-    <com.example.xuchichi.ccwbodemo.view.CircleImageView
-        android:id="@+id/iv_head"
-        android:layout_width="55dp"
-        android:layout_centerVertical="true"
-        app:civ_border_width="0dp"
-        app:civ_border_color="@color/black"
-        android:src="@mipmap/ic_launcher"
-        android:layout_height="50dp" />
+                android:background="@color/white"
+                android:paddingLeft="10dp">
+
+                <com.example.xuchichi.ccwbodemo.view.CircleImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="55dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_launcher"
+                    app:civ_border_color="@color/black"
+                    app:civ_border_width="0dp" />
+
                 <TextView
-                    android:layout_marginTop="15dp"
                     android:id="@+id/tv_username"
-                    android:layout_toRightOf="@+id/iv_head"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/iv_head"
                     android:gravity="center_vertical"
                     android:paddingLeft="5dp"
                     android:text="微博名字"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
+
                 <TextView
-                    android:layout_marginRight="60dp"
-                    android:singleLine="true"
-                    android:layout_marginTop="8dp"
                     android:id="@+id/description"
-                    android:layout_below="@+id/tv_username"
-                    android:layout_toRightOf="@+id/iv_head"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_username"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/iv_head"
                     android:gravity="center_vertical"
                     android:paddingLeft="5dp"
+                    android:singleLine="true"
                     android:text="简介:哈哈哈fdgfhgfhgffxbvcnc哈好哈哈好看哈哈惊魂甫定"
                     android:textColor="@color/text_grey"
                     android:textSize="14sp" />
+
                 <LinearLayout
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center">
+
                     <ImageView
-                        android:layout_marginLeft="10dp"
-                        android:layout_centerVertical="true"
-                        android:background="@mipmap/ic_launcher"
                         android:layout_width="25dp"
-                        android:layout_height="25dp" />
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@mipmap/ic_launcher" />
+
                     <TextView
-                        android:layout_toLeftOf="@+id/tv_dot"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/tv_dot"
                         android:gravity="center_vertical"
                         android:text="会员"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
+
                     <TextView
                         android:id="@+id/tv_dot"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/shape_dot"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
-                        />
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/shape_dot" />
                 </LinearLayout>
 
             </RelativeLayout>
-            <View  style="@style/HoGreyLine2"/>
+
+            <View style="@style/HoGreyLine2" />
+
             <LinearLayout
-                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:minHeight="40dp">
+
                 <LinearLayout
                     android:id="@+id/llWeibo"
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tv_weiNum"
                         android:layout_width="wrap_content"
@@ -145,22 +157,25 @@
                         android:text="156"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:gravity="center_vertical"
                         android:text="微博"
-                        android:layout_marginTop="3dp"
                         android:textColor="@color/text_grey"
                         android:textSize="12sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/llFollow"
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tv_followNum"
                         android:layout_width="wrap_content"
@@ -169,22 +184,25 @@
                         android:text="156"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:gravity="center_vertical"
                         android:text="关注"
-                        android:layout_marginTop="3dp"
                         android:textColor="@color/text_grey"
                         android:textSize="12sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/llFans"
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tv_fansNum"
                         android:layout_width="wrap_content"
@@ -193,337 +211,381 @@
                         android:text="156"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:gravity="center_vertical"
                         android:text="粉丝"
-                        android:layout_marginTop="3dp"
                         android:textColor="@color/text_grey"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_newFriend"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="新的好友"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp" />
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_myablum"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="我的相册"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp" />
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_myLike"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="0.5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:text="我的赞"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="收藏,转移到这里了"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp" />
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_wallet"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:text="微博钱包"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="爱要大声说出口"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp"/>
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_sport"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="0.5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:text="微博运动"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="每天一万步,医生远离你"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp" />
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_freeFlow"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="0.5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:text="免流量"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="微博微卡"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp" />
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_fansService"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:text="粉丝服务"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="写文章、发点评、转粉丝"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp" />
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_fansTitle"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="0.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="0.5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:text="粉丝头条"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="推广博文及账号的利器"
                     android:textColor="@color/text_grey"
                     android:textSize="12sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp"/>
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:id="@+id/ll_customerCenter"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="客服中心"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp"/>
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_draft"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@color/white">
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/black"/>
+                    android:background="@color/black" />
+
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="草稿箱"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
                 <ImageView
-                    android:background="@drawable/iv_grey_right_arrow"
                     android:layout_width="6dp"
-                    android:layout_height="12dp"/>
+                    android:layout_height="12dp"
+                    android:background="@drawable/iv_grey_right_arrow" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
