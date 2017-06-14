@@ -13,10 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <meta-data
-        android:name="UMENG_APPKEY"
-        android:value="59351c58f5ade467f1001154" />
-
     <application
         android:name="com.example.xuchichi.ccwbodemo.Myapplication"
         android:allowBackup="true"
@@ -24,6 +20,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59351c58f5ade467f1001154" />
+
         <activity android:name="com.example.xuchichi.ccwbodemo.MainActivity"></activity>
         <activity
             android:name="com.example.xuchichi.ccwbodemo.WBShareActivity"
@@ -43,8 +44,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.xuchichi.ccwbodemo.activity.SettingActivity" />
-        <activity
-            android:name="com.example.xuchichi.ccwbodemo.activity.MainCenterActivity" />
+        <activity android:name="com.example.xuchichi.ccwbodemo.activity.MainCenterActivity" />
     </application>
 
 </manifest>

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
    android:orientation="vertical">
 
-    <TextView
+    <Button
+        android:id="@+id/btn"
         android:text="微博"
         android:gravity="center"
         android:layout_width="match_parent"

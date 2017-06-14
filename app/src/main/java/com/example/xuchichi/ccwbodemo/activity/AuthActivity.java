@@ -12,18 +12,18 @@ import com.example.xuchichi.ccwbodemo.MainActivity;
 import com.example.xuchichi.ccwbodemo.base.BaseActivity;
 import com.example.xuchichi.ccwbodemo.entitys.UserInfo;
 import com.example.xuchichi.ccwbodemo.utils.UserInfoUtil;
-import com.google.android.gms.awareness.fence.LocationFence;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -39,7 +39,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.Headers;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -50,6 +49,8 @@ public class AuthActivity extends BaseActivity {
     Button btnAuth;
     @InjectView(R.id.btn_authlogin)
     Button btnAuthlogin;
+    @InjectView(R.id.btn_wbShare)
+    Button btnWbShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,39 @@ public class AuthActivity extends BaseActivity {
         ButterKnife.inject(this);
     }
 
+    /**
+     * 分享回调
+     */
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //分享开始的回调
+        }
+
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat", "platform" + platform);
+
+            Toast.makeText(AuthActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(AuthActivity.this, platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            if (t != null) {
+                Log.d("throw", "throw:" + t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(AuthActivity.this, platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+    /**
+     * 授权回调
+     */
     private UMAuthListener umAuthListener = new UMAuthListener() {
         @Override
         public void onStart(SHARE_MEDIA platform) {
@@ -92,21 +126,30 @@ public class AuthActivity extends BaseActivity {
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.btn_auth, R.id.btn_authlogin})
+    @OnClick({R.id.btn_auth, R.id.btn_authlogin, R.id.btn_wbShare})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_auth:
-//                auth("https://api.weibo.com/oauth2/authorize");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        net();
-//                        auth("https://api.weibo.com/oauth2/authorize");
-                    }
-                }).start();
+                auth("https://api.weibo.com/oauth2/authorize");
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        net();
+////                        auth("https://api.weibo.com/oauth2/authorize");
+//                    }
+//                }).start();
                 break;
             case R.id.btn_authlogin:
                 UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, umAuthListener);
+                break;
+            case R.id.btn_wbShare:
+                new ShareAction(AuthActivity.this).setPlatform(SHARE_MEDIA.SINA)
+                        .withText("hello")
+                        .setCallback(umShareListener)
+                        .share();
+//                new ShareAction(AuthActivity.this).withText("hello")
+//                        .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
+//                        .setCallback(umShareListener).open();
                 break;
         }
     }
@@ -212,8 +255,9 @@ public class AuthActivity extends BaseActivity {
                     for (int i = 0; i < responseHeaders.size(); i++) {
                         System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                     }
-                    Type type=new TypeToken<UserInfo>(){}.getType();
-                    String str=new Gson().toJson(response.body().toString());
+                    Type type = new TypeToken<UserInfo>() {
+                    }.getType();
+                    String str = new Gson().toJson(response.body().toString());
                     Log.e("succress", response.body().toString());
                 }
 

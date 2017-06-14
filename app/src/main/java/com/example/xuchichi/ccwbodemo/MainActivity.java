@@ -16,6 +16,7 @@ import com.example.xuchichi.ccwbodemo.fragments.FindFragment;
 import com.example.xuchichi.ccwbodemo.fragments.MineFragment;
 import com.example.xuchichi.ccwbodemo.fragments.MsgFragment;
 import com.example.xuchichi.ccwbodemo.fragments.WeiboFragment;
+import com.umeng.socialize.UMShareAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,4 +90,5 @@ public class MainActivity extends BaseActivity {
 
         }
     }
+
 }
