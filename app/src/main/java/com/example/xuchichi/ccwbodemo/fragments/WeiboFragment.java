@@ -23,9 +23,6 @@ import butterknife.OnClick;
  * A fragment with a Google +1 button.
  */
 public class WeiboFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment {
-
-    @InjectView(R.id.btn)
-    Button btn;
     View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +31,6 @@ public class WeiboFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragm
         ButterKnife.inject(this, view);
         return view;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
