@@ -67,6 +67,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.center:
                 startActivity(new Intent(this, MainCenterActivity.class));
+                overridePendingTransition(R.anim.from_bottom,R.anim.from_bottom);
                 break;
             case R.id.ll_find:
                 clickIndex(2);
