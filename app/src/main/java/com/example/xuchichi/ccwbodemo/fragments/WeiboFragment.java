@@ -23,17 +23,13 @@ import butterknife.OnClick;
  * A fragment with a Google +1 button.
  */
 public class WeiboFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment {
-    View view;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_weibo, container, false);
-        ButterKnife.inject(this, view);
-        return view;
+    protected int getLayout() {
+        return R.layout.fragment_weibo;
     }
+
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
+    protected void initView(View view) {
+
     }
 }

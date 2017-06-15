@@ -16,13 +16,13 @@ import com.google.android.gms.plus.PlusOneButton;
  */
 public class FindFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment {
 
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_find, container, false);
-        return view;
+    protected int getLayout() {
+        return R.layout.fragment_find;
     }
 
+    @Override
+    protected void initView(View view) {
+
+    }
 }

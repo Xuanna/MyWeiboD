@@ -20,7 +20,7 @@ public class MainCenterActivity extends BaseActivity {
     LinearLayout llBottom;
     @InjectView(R.id.iv_img)
     ImageView ivImg;
-
+    Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +30,30 @@ public class MainCenterActivity extends BaseActivity {
     }
 
     public void init() {
-        ivImg.setVisibility(View.GONE);
-//        Animation animation=AnimationUtils.loadAnimation(this,R.anim.all_degree);
-//        llBottom.startAnimation(animation);
-//        animation.start();
     }
 
     @OnClick(R.id.ll_bottom)
     public void onClick() {
-        overridePendingTransition(R.anim.from_top, 0);
-        finish();
+        animation=AnimationUtils.loadAnimation(this,R.anim.all_degree);
+        llBottom.startAnimation(animation);
+        animation.setAnimationListener(animationListener);
+//        overridePendingTransition(R.anim.from_top, 0);
+//
     }
+    Animation.AnimationListener animationListener=new Animation.AnimationListener() {
+        @Override
+        public void onAnimationStart(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            finish();
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
+        }
+    };
 }

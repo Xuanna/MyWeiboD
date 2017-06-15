@@ -1,7 +1,6 @@
 package com.example.xuchichi.ccwbodemo.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,14 +39,30 @@ public class MineFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragme
     TextView tvFansNum;
     @InjectView(R.id.llFans)
     LinearLayout llFans;
+    @InjectView(R.id.ll_newFriend)
+    LinearLayout llNewFriend;
+    @InjectView(R.id.ll_myablum)
+    LinearLayout llMyablum;
+    @InjectView(R.id.ll_myLike)
+    LinearLayout llMyLike;
+    @InjectView(R.id.ll_wallet)
+    LinearLayout llWallet;
+    @InjectView(R.id.ll_sport)
+    LinearLayout llSport;
+    @InjectView(R.id.ll_freeFlow)
+    LinearLayout llFreeFlow;
+    @InjectView(R.id.ll_fansService)
+    LinearLayout llFansService;
+    @InjectView(R.id.ll_fansTitle)
+    LinearLayout llFansTitle;
+    @InjectView(R.id.ll_customerCenter)
+    LinearLayout llCustomerCenter;
+    @InjectView(R.id.ll_draft)
+    LinearLayout llDraft;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mine, container, false);
-        ButterKnife.inject(this, view);
-        init();
-        return view;
+    protected int getLayout() {
+        return R.layout.fragment_mine;
     }
 
     public void init() {
@@ -62,9 +77,21 @@ public class MineFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragme
     }
 
     @Override
+    protected void initView(View view) {
+        init();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.inject(this, rootView);
+        return rootView;
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
-
 }

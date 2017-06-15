@@ -6,7 +6,10 @@
     >
 
     <View style="@style/HoGreyLine"></View>
-
+    <ImageView
+        android:background="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
