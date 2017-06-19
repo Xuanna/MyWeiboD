@@ -143,6 +143,9 @@ public class AuthActivity extends BaseActivity {
                 UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, umAuthListener);
                 break;
             case R.id.btn_wbShare:
+//                new ShareAction(AuthActivity.this).withText("hello")
+//                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
+//                        .setCallback(umShareListener).open();
                 new ShareAction(AuthActivity.this).setPlatform(SHARE_MEDIA.SINA)
                         .withText("hello")
                         .setCallback(umShareListener)

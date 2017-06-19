@@ -18,9 +18,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.xuchichi.ccwbodemo.CommonUtil;
 import com.example.xuchichi.ccwbodemo.Myapplication;
 import com.example.xuchichi.ccwbodemo.cache.ACache;
 import com.example.xuchichi.ccwbodemo.utils.SharePerferencesUtil;
+import com.example.xuchichi.ccwbodemo.utils.Utils;
 import com.umeng.socialize.UMShareAPI;
 
 import okhttp3.OkHttpClient;
@@ -32,16 +34,23 @@ public class BaseActivity extends AppCompatActivity {
     ACache aCache;
     public SharePerferencesUtil mSpUtil;
     public OkHttpClient okHttpClient;
+    CommonUtil commonUtil;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 经测试在代码里直接声明透明状态栏更有效
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
         aCache = ACache.get(this);
         mSpUtil = Myapplication.getInstance().perferencesUtil;
         Myapplication.getInstance().addActivity(this);
         init();
-        adaptTheme(true);
-        StatusBarLightMode(this);
+        commonUtil=CommonUtil.getInstance();
+//        adaptTheme(true);
+//        StatusBarLightMode(this);
     }
 
     public void init() {

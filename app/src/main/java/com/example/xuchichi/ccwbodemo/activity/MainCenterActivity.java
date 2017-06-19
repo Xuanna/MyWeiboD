@@ -30,6 +30,7 @@ public class MainCenterActivity extends BaseActivity {
     }
 
     public void init() {
+
     }
 
     @OnClick(R.id.ll_bottom)
@@ -37,7 +38,6 @@ public class MainCenterActivity extends BaseActivity {
         animation=AnimationUtils.loadAnimation(this,R.anim.all_degree);
         llBottom.startAnimation(animation);
         animation.setAnimationListener(animationListener);
-//        overridePendingTransition(R.anim.from_top, 0);
 //
     }
     Animation.AnimationListener animationListener=new Animation.AnimationListener() {

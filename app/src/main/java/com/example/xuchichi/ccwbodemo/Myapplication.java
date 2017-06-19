@@ -7,6 +7,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.example.xuchichi.ccwbodemo.utils.SharePerferencesUtil;
+import com.example.xuchichi.ccwbodemo.utils.Utils;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -38,6 +39,7 @@ public class Myapplication extends MultiDexApplication{
         UMShareAPI.get(this);
         perferencesUtil=new SharePerferencesUtil(this);
         myapplication=this;
+        Utils.init(this);
     }
     {
         PlatformConfig.setSinaWeibo("2321418893","b816046ccd66e5aa0ca020973193ff8c","http://www.baidu.com/");

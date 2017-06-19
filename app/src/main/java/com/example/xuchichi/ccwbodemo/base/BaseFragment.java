@@ -1,5 +1,6 @@
 package com.example.xuchichi.ccwbodemo.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.chichi.ccwbodemo.R;
+import com.example.xuchichi.ccwbodemo.CommonUtil;
 
 import butterknife.ButterKnife;
 
@@ -15,16 +17,16 @@ import butterknife.ButterKnife;
  * Created by xuchichi on 2017/5/23.
  */
 public abstract class BaseFragment extends Fragment {
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            loadData();
-        }
-    }
     protected abstract int getLayout();
     protected  abstract void initView(View view);
     View rootView;
+    Context mContext;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = CommonUtil.getInstance().getContext();
+    }
 
     @Nullable
     @Override
@@ -43,8 +45,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void loadData(){};
-//    @Override
-//    public boolean getUserVisibleHint(boolean get) {
-//        return super.getUserVisibleHint();
-//    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            loadData();
+        }
+    }
 }
