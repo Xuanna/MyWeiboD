@@ -2,19 +2,20 @@ package com.example.xuchichi.ccwbodemo.fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.AbsListView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 
+import com.example.chichi.ccwbodemo.BR;
 import com.example.chichi.ccwbodemo.R;
-import com.example.chichi.mylibrary.BaseQuickAdapter;
-import com.example.xuchichi.ccwbodemo.adapter.PullToRefreshAdapter;
-import com.example.xuchichi.ccwbodemo.base.*;
-import com.example.xuchichi.ccwbodemo.listener.OnItemClickListener;
+import com.example.xuchichi.ccwbodemo.adapter.MyListAdapter;
+import com.example.xuchichi.ccwbodemo.entitys.MsgListInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -22,65 +23,80 @@ import butterknife.InjectView;
 /**
  * A fragment with a Google +1 button.
  */
-public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment implements BaseQuickAdapter.RequestLoadMoreListener {
+public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment {
 
+    List<MsgListInfo> list = new ArrayList<>();
+    @InjectView(R.id.listview)
+    ListView listview;
+    MyListAdapter<MsgListInfo> adapter;
 
-    @InjectView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @InjectView(R.id.SwipeRefreshLayout)
-    android.support.v4.widget.SwipeRefreshLayout SwipeRefreshLayout;
-
-    PullToRefreshAdapter pullToRefreshAdapter;
-
-    private int mCurrentCounter = 0;
 
     @Override
     protected int getLayout() {
         return R.layout.fragment_msg;
     }
 
-    /**
-     * 下拉刷新
-     */
-    android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener onRefreshListener=new SwipeRefreshLayout.OnRefreshListener() {
-        @Override
-        public void onRefresh() {
+    public void initData() {
+        MsgListInfo msgListInfo = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo1 = new MsgListInfo("追剧大咖", "谢谢关注!看剧私信剧名即可,第一时间更新剧集!剧评、剧探、剧时尚！", "0", "11:50");
+        MsgListInfo msgListInfo2 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        list.add(msgListInfo);
+        list.add(msgListInfo1);
+        list.add(msgListInfo2);
+    }
 
-        }
-    };
     @Override
     protected void initView(View view) {
-        SwipeRefreshLayout.setOnRefreshListener(onRefreshListener);
+        initData();
         initAdapter();
         addHead();
     }
-    public void addHead(){
-        View view=LayoutInflater.from(getContext()).inflate(R.layout.layout_msg_head1,null);
-        pullToRefreshAdapter.addHeaderView(view);
-    }
-    /**
-     * 上拉加载
-     */
-    @Override
-    public void onLoadMoreRequested() {
 
+    public void initAdapter() {
+        listview.setOnScrollListener(onScrollListener);
+        adapter=new MyListAdapter<>(getContext(),R.layout.item_msg, BR.msgInfo,list);
+        listview.setAdapter(adapter);
     }
-    private void initAdapter() {
-        pullToRefreshAdapter = new PullToRefreshAdapter();
-        pullToRefreshAdapter.setOnLoadMoreListener(this, recyclerView);
-        pullToRefreshAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-        pullToRefreshAdapter.setPreLoadNumber(3);
-        recyclerView.setAdapter(pullToRefreshAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mCurrentCounter = pullToRefreshAdapter.getData().size();
+    ProgressBar progressBar;
 
-        recyclerView.addOnItemTouchListener(new OnItemClickListener() {
-            @Override
-            public void onSimpleItemClick(final BaseQuickAdapter adapter, final View view, final int position) {
-                Toast.makeText(getActivity(), Integer.toString(position), Toast.LENGTH_LONG).show();
+    public void addHead() {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_progress, null);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        listview.addHeaderView(view);
+    }
+
+    AbsListView.OnScrollListener onScrollListener = new AbsListView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(AbsListView view, int scrollState) {
+            switch (scrollState) {
+                case SCROLL_STATE_TOUCH_SCROLL://触摸滑动
+                    break;
+                case SCROLL_STATE_FLING://惯性滑动
+                    break;
+                case SCROLL_STATE_IDLE://停止滑动
+                    break;
+
             }
-        });
-    }
+        }
+
+        int lastFirstVisibleItem;
+
+        @Override
+        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            if (firstVisibleItem > lastFirstVisibleItem) {//上拉
+
+            }
+            if (firstVisibleItem < lastFirstVisibleItem) {//下拉
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            if (visibleItemCount + firstVisibleItem == totalItemCount) {//滑动到底部
+
+            }
+            lastFirstVisibleItem = firstVisibleItem;
+
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,5 +109,11 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+        <data>
+            <variable
+                name="msgInfo"
+                type="com.example.xuchichi.ccwbodemo.entitys.MsgListInfo"/>
+        </data>
+    <RelativeLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_img"
+            android:background="@mipmap/ic_launcher"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_title"
+              android:text="@{msgInfo.msgTitle}"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/tv_title"
+            android:id="@+id/tv_msg"
+            android:textSize="13sp"
+            android:textColor="@color/text_grey"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/iv_img"
+            android:layout_width="wrap_content"
+            android:text="@{msgInfo.mgsContent}"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_time"
+            android:textSize="12sp"
+            android:textColor="@color/text_grey"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:text="@{msgInfo.time}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:padding="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/tv_time"
+            android:background="@drawable/shape_dot"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:text="@{msgInfo.msgNum}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</layout>

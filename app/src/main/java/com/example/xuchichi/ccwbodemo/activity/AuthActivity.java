@@ -19,8 +19,10 @@ import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -131,116 +133,41 @@ public class AuthActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btn_auth:
                 auth("https://api.weibo.com/oauth2/authorize");
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
 //                        net();
-////                        auth("https://api.weibo.com/oauth2/authorize");
-//                    }
-//                }).start();
+//                        auth("https://api.weibo.com/oauth2/authorize");
+                    }
+                }).start();
                 break;
             case R.id.btn_authlogin:
                 UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, umAuthListener);
                 break;
             case R.id.btn_wbShare:
-//                new ShareAction(AuthActivity.this).withText("hello")
-//                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN)
-//                        .setCallback(umShareListener).open();
+                UMImage image = new UMImage(AuthActivity.this, R.drawable.cast_abc_scrubber_control_to_pressed_mtrl_005);//资源文件
                 new ShareAction(AuthActivity.this).setPlatform(SHARE_MEDIA.SINA)
-                        .withText("hello")
+//                        .withText("hello")
+                        .withMedia(image)
                         .setCallback(umShareListener)
                         .share();
-//                new ShareAction(AuthActivity.this).withText("hello")
-//                        .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
-//                        .setCallback(umShareListener).open();
                 break;
         }
     }
 
-    public void net() {
-        try {
-            URL url = new URL("https://api.weibo.com/oauth2/authorize");
-            URLConnection connection = url.openConnection();
-            HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
-            httpURLConnection.setConnectTimeout(3000);
-            httpURLConnection.setReadTimeout(3000);
-            httpURLConnection.setDoInput(true);
-            httpURLConnection.setDoOutput(true);
-
-            Map<String, String> mapParam = new HashMap<>();
-            mapParam.put("client_id", "2321418893");
-            mapParam.put("redirect_uri", "http://www.baidu.com/");
-//            mapParam.put("scope", "");
-//            mapParam.put("state", "");
-//            mapParam.put("display", "");
-//            mapParam.put("forcelogin", "");
-//            mapParam.put("language", "");
-
-            StringBuffer params = new StringBuffer();
-            Iterator it = mapParam.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry element = (Map.Entry) it.next();
-                params.append(element.getKey());
-                params.append("=");
-                params.append(element.getValue());
-                params.append("&");
-            }
-            if (params.length() > 0) {
-                params.deleteCharAt(params.length() - 1);
-            }
-
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setRequestProperty("accept", "*/*");
-            httpURLConnection.setRequestProperty("connection", "Keep-Alive");
-            httpURLConnection.setRequestProperty("Charset", "UTF-8");
-            httpURLConnection.setRequestProperty("Content-Length", String
-                    .valueOf(params.toString().getBytes("UTF-8")));
-            PrintWriter printWriter = new PrintWriter(httpURLConnection.getOutputStream());
-            // 发送请求参数
-            printWriter.write(mapParam.toString());
-            // flush输出流的缓冲
-            printWriter.flush();
-            httpURLConnection.connect();
-            try {
-                if (httpURLConnection.getResponseCode() == 200) {
-                    //得到输入流
-                    InputStream is = httpURLConnection.getInputStream();
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    byte[] buffer = new byte[1024];
-                    int len = 0;
-                    while (-1 != (len = is.read(buffer))) {
-                        baos.write(buffer, 0, len);
-                        baos.flush();
-                    }
-                    Log.e("e", "baos=" + baos.toString("utf-8"));
-                } else {
-                    Toast.makeText(this, "bushi200", Toast.LENGTH_SHORT).show();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
     public void auth(String url) {
         RequestBody requestBody = new FormBody.Builder()
-//                    .add("access_token",UserInfoUtil.getUserInfo().access_token)
-//                .add("uid","")
-//                .add("screen_name","")
                 .add("client_id", "2321418893")
-                .add("redirect_uri", "http://sns.xuchichi.com/sina2/callback")//
-                .add("scope", "")
-                .add("state", "")
-                .add("display", "mobile")
-                .add("forcelogin", "")
-                .add("language", "")
+                .add("redirect_uri", "http://www.baidu.com/")//
+//                .add("scope", "")
+//                .add("state", "")
+//                .add("display", "mobile")
+//                .add("forcelogin", "")
+//                .add("language", "")
                 .build();
-        Request request = new Request.Builder().url(url)
+        Request request = new Request.Builder()
+                .url(url)
+//                .url(url + "?client_id=2321418893&redirect_uri=http://www.baidu.com/")
                 .post(requestBody)
                 .build();
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -258,10 +185,7 @@ public class AuthActivity extends BaseActivity {
                     for (int i = 0; i < responseHeaders.size(); i++) {
                         System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                     }
-                    Type type = new TypeToken<UserInfo>() {
-                    }.getType();
-                    String str = new Gson().toJson(response.body().toString());
-                    Log.e("succress", response.body().toString());
+                    Log.e("succress", new Gson().toJson(response.toString()));
                 }
 
             }

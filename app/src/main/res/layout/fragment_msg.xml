@@ -3,18 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/SwipeRefreshLayout"
+    <ListView
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/listview"/>
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+        <!--android:id="@+id/SwipeRefreshLayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cacheColorHint="#00000000"
-            android:overScrollMode="never"
-            android:scrollbars="none"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/recyclerView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:cacheColorHint="#00000000"-->
+            <!--android:overScrollMode="never"-->
+            <!--android:scrollbars="none"/>-->
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
 </LinearLayout>
