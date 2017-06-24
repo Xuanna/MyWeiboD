@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:clipToPadding">true</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
     <!--圆角图片-->
     <declare-styleable name="CircleImageView">

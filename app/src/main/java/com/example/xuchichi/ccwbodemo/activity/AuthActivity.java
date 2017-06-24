@@ -186,6 +186,7 @@ public class AuthActivity extends BaseActivity {
                         System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                     }
                     Log.e("succress", new Gson().toJson(response.toString()));
+                    Log.e("succress", response.toString());
                     //3cabdbd12d3fd2f8a7d5b9041971a4be
                     //3cabdbd12d3fd2f8a7d5b9041971a4be
                 }
