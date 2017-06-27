@@ -6,4 +6,7 @@
     <string name="mine">我的</string>
     <string name="title_activity_main_center">MainCenterActivity</string>
     <string name="aiteMe">我的</string>
+    <string name="loading">loading</string>
+    <string name="load_failed">load_failed</string>
+    <string name="load_end">load_end</string>
 </resources>
