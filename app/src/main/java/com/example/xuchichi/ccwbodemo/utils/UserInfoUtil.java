@@ -1,7 +1,7 @@
 package com.example.xuchichi.ccwbodemo.utils;
 
 import com.example.xuchichi.ccwbodemo.Myapplication;
-import com.example.xuchichi.ccwbodemo.entitys.UserInfo;
+import com.example.xuchichi.ccwbodemo.model.UserInfo;
 
 /**
  * Created by xuchichi on 2017/5/23.

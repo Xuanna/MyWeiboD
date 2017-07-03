@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.example.chichi.ccwbodemo.R;
-import com.example.xuchichi.ccwbodemo.entitys.MsgListInfo;
+import com.example.xuchichi.ccwbodemo.model.MsgListInfo;
 
 import java.util.List;
 

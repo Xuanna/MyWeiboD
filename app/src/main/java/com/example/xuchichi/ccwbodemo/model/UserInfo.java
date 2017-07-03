@@ -1,4 +1,4 @@
-package com.example.xuchichi.ccwbodemo.entitys;
+package com.example.xuchichi.ccwbodemo.model;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -3,7 +3,7 @@
         <data>
             <variable
                 name="msgInfo"
-                type="com.example.xuchichi.ccwbodemo.entitys.MsgListInfo"/>
+                type="com.example.xuchichi.ccwbodemo.model.MsgListInfo"/>
         </data>
     <RelativeLayout
         android:paddingLeft="10dp"

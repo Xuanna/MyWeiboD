@@ -1,4 +1,4 @@
-package com.example.xuchichi.ccwbodemo.entitys;
+package com.example.xuchichi.ccwbodemo.model;
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper

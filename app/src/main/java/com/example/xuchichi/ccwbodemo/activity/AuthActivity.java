@@ -10,10 +10,11 @@ import android.widget.Toast;
 import com.example.chichi.ccwbodemo.R;
 import com.example.xuchichi.ccwbodemo.MainActivity;
 import com.example.xuchichi.ccwbodemo.base.BaseActivity;
-import com.example.xuchichi.ccwbodemo.entitys.UserInfo;
+import com.example.xuchichi.ccwbodemo.callback.StringDialogCallback;
+import com.example.xuchichi.ccwbodemo.model.UserInfo;
 import com.example.xuchichi.ccwbodemo.utils.UserInfoUtil;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.lzy.okgo.OkGo;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -21,17 +22,7 @@ import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import butterknife.ButterKnife;
@@ -127,19 +118,57 @@ public class AuthActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //Activity销毁时，取消网络请求
+        OkGo.getInstance().cancelTag(this);
+    }
 
     @OnClick({R.id.btn_auth, R.id.btn_authlogin, R.id.btn_wbShare})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_auth:
-                auth("https://api.weibo.com/oauth2/authorize");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-//                        net();
-//                        auth("https://api.weibo.com/oauth2/authorize");
-                    }
-                }).start();
+                OkGo.<String>post("https://baidu.com/")
+                        .tag(this)
+                        .execute(new StringDialogCallback(this){
+                            @Override
+                            public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+                                Log.e("onSuccess", response.toString());
+                            }
+
+                            @Override
+                            public void onError(com.lzy.okgo.model.Response<String> response) {
+                                super.onError(response);
+                                Log.e("onError", response.toString());
+                            }
+
+                        });
+//                OkGo.<String>post("https://api.weibo.com/oauth2/authorize")//
+//                        .tag(this)
+//                        .params("client_id", "2321418893")
+//                        .params("redirect_uri", "http://www.baidu.com/")//
+//                        .isMultipart(true)
+//                        .execute(new StringDialogCallback(this) {
+//                            @Override
+//                            public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+//                                Log.e("onSuccess", response.toString());
+//                            }
+//
+//                            @Override
+//                            public void onError(com.lzy.okgo.model.Response<String> response) {
+//                                super.onError(response);
+//                                Log.e("onError", response.toString());
+//                            }
+//                        });
+//                auth("https://api.weibo.com/oauth2/authorize");
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+////                        net();
+////                        auth("https://api.weibo.com/oauth2/authorize");
+//                    }
+//                }).start();
                 break;
             case R.id.btn_authlogin:
                 UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, umAuthListener);

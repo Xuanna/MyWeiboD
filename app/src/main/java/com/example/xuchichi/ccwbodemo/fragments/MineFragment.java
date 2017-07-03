@@ -8,8 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.chichi.ccwbodemo.R;
-import com.example.xuchichi.ccwbodemo.base.*;
-import com.example.xuchichi.ccwbodemo.entitys.UserInfo;
+import com.example.xuchichi.ccwbodemo.model.UserInfo;
 import com.example.xuchichi.ccwbodemo.utils.UserInfoUtil;
 import com.example.xuchichi.ccwbodemo.view.CircleImageView;
 

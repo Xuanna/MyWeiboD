@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import com.example.chichi.ccwbodemo.BR;
 import com.example.chichi.ccwbodemo.R;
 import com.example.xuchichi.ccwbodemo.adapter.MyListAdapter;
-import com.example.xuchichi.ccwbodemo.entitys.MsgListInfo;
+import com.example.xuchichi.ccwbodemo.model.MsgListInfo;
 
 import java.util.ArrayList;
 import java.util.List;

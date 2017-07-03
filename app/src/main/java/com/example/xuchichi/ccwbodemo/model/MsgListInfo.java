@@ -1,4 +1,4 @@
-package com.example.xuchichi.ccwbodemo.entitys;
+package com.example.xuchichi.ccwbodemo.model;
 
 /**
  * Created by xuchichi on 2017/6/20.
