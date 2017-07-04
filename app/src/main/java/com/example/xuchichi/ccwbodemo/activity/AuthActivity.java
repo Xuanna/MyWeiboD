@@ -15,6 +15,7 @@ import com.example.xuchichi.ccwbodemo.model.UserInfo;
 import com.example.xuchichi.ccwbodemo.utils.UserInfoUtil;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.model.Progress;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -129,9 +130,13 @@ public class AuthActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_auth:
-                OkGo.<String>post("https://baidu.com/")
+
+                OkGo.<String>post("https://api.weibo.com/oauth2/authorize")//
                         .tag(this)
-                        .execute(new StringDialogCallback(this){
+//                        .params("client_id", "2321418893")
+//                        .params("redirect_uri", "http://www.baidu.com/")//
+//                        .isMultipart(true)
+                        .execute(new StringDialogCallback(this) {
                             @Override
                             public void onSuccess(com.lzy.okgo.model.Response<String> response) {
                                 Log.e("onSuccess", response.toString());
@@ -142,25 +147,7 @@ public class AuthActivity extends BaseActivity {
                                 super.onError(response);
                                 Log.e("onError", response.toString());
                             }
-
                         });
-//                OkGo.<String>post("https://api.weibo.com/oauth2/authorize")//
-//                        .tag(this)
-//                        .params("client_id", "2321418893")
-//                        .params("redirect_uri", "http://www.baidu.com/")//
-//                        .isMultipart(true)
-//                        .execute(new StringDialogCallback(this) {
-//                            @Override
-//                            public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-//                                Log.e("onSuccess", response.toString());
-//                            }
-//
-//                            @Override
-//                            public void onError(com.lzy.okgo.model.Response<String> response) {
-//                                super.onError(response);
-//                                Log.e("onError", response.toString());
-//                            }
-//                        });
 //                auth("https://api.weibo.com/oauth2/authorize");
 //                new Thread(new Runnable() {
 //                    @Override

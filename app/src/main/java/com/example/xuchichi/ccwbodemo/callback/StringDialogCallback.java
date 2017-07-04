@@ -17,6 +17,7 @@ package com.example.xuchichi.ccwbodemo.callback;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.util.Log;
 import android.view.Window;
 
 import com.lzy.okgo.callback.StringCallback;
@@ -47,6 +48,7 @@ public abstract class StringDialogCallback extends StringCallback {
     public void onStart(Request<String, ? extends Request> request) {
         if (dialog != null && !dialog.isShowing()) {
             dialog.show();
+            Log.e("onStart","onStart");
         }
     }
 
@@ -54,6 +56,7 @@ public abstract class StringDialogCallback extends StringCallback {
     public void onFinish() {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
+            Log.e("onFinish","onFinish");
         }
     }
 }
