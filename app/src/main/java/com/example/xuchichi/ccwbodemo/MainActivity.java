@@ -55,6 +55,7 @@ public class MainActivity extends BaseActivity {
         list.add(new MineFragment());
         ViewpagerAdapter adapter=new ViewpagerAdapter(getSupportFragmentManager(),list);
         viewpager.setAdapter(adapter);
+        viewpager.setCurrentItem(0,false);
     }
     @OnClick({R.id.ll_weibo, R.id.ll_msg, R.id.center, R.id.ll_find, R.id.ll_mine})
     public void onClick(View view) {
@@ -78,7 +79,7 @@ public class MainActivity extends BaseActivity {
         }
     }
     public  void clickIndex(int index){
-        viewpager.setCurrentItem(index);
+        viewpager.setCurrentItem(index,false);
         switch (index){
             case 0:
                 break;

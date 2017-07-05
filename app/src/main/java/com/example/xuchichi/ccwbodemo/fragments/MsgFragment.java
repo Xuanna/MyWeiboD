@@ -2,6 +2,7 @@ package com.example.xuchichi.ccwbodemo.fragments;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +41,27 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
         MsgListInfo msgListInfo = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
         MsgListInfo msgListInfo1 = new MsgListInfo("追剧大咖", "谢谢关注!看剧私信剧名即可,第一时间更新剧集!剧评、剧探、剧时尚！", "0", "11:50");
         MsgListInfo msgListInfo2 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo3 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo4 = new MsgListInfo("追剧大咖", "谢谢关注!看剧私信剧名即可,第一时间更新剧集!剧评、剧探、剧时尚！", "0", "11:50");
+        MsgListInfo msgListInfo5 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo6 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo7 = new MsgListInfo("追剧大咖", "谢谢关注!看剧私信剧名即可,第一时间更新剧集!剧评、剧探、剧时尚！", "0", "11:50");
+        MsgListInfo msgListInfo8 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo9 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
+        MsgListInfo msgListInfo10 = new MsgListInfo("追剧大咖", "谢谢关注!看剧私信剧名即可,第一时间更新剧集!剧评、剧探、剧时尚！", "0", "11:50");
+        MsgListInfo msgListInfo11 = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
         list.add(msgListInfo);
         list.add(msgListInfo1);
         list.add(msgListInfo2);
+        list.add(msgListInfo3);
+        list.add(msgListInfo4);
+        list.add(msgListInfo5);
+        list.add(msgListInfo6);
+        list.add(msgListInfo7);
+        list.add(msgListInfo8);
+        list.add(msgListInfo9);
+        list.add(msgListInfo10);
+        list.add(msgListInfo11);
     }
 
     @Override
@@ -64,6 +83,7 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         listview.addHeaderView(view);
     }
+    Handler handler=new Handler();
 
     AbsListView.OnScrollListener onScrollListener = new AbsListView.OnScrollListener() {
         @Override
@@ -89,6 +109,12 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
             }
             if (firstVisibleItem < lastFirstVisibleItem) {//下拉
                 progressBar.setVisibility(View.VISIBLE);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                },3000);
             }
             if (visibleItemCount + firstVisibleItem == totalItemCount) {//滑动到底部
 

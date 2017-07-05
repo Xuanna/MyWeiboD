@@ -132,13 +132,13 @@ public class AuthActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.btn_auth:
 
-                OkGo.<String>post("http://wallet.pigamegroup.com/user/applogin")//https://api.weibo.com/oauth2/authorize
+                OkGo.<String>post("https://api.weibo.com/oauth2/authorize")//https://api.weibo.com/oauth2/authorize
                         .tag(this)
-                        .params("username","piaa12")
-                        .params("password","piaa12")
-//                        .params("client_id", "2321418893")
-//                        .params("redirect_uri", "http://www.baidu.com/")//
-//                        .isMultipart(true)
+//                        .params("username","piaa12")
+//                        .params("password","123123a")
+                        .params("client_id", "2321418893")
+                        .params("redirect_uri", "http://www.baidu.com/")//
+                        .isMultipart(true)
                         .execute(new StringDialogCallback(this) {
                             @Override
                             public void onSuccess(com.lzy.okgo.model.Response<String> response) {

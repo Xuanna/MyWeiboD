@@ -21,6 +21,7 @@ public class MainCenterActivity extends BaseActivity {
     @InjectView(R.id.iv_img)
     ImageView ivImg;
     Animation animation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,17 +31,19 @@ public class MainCenterActivity extends BaseActivity {
     }
 
     public void init() {
-
+        animation = AnimationUtils.loadAnimation(this, R.anim.degree_tozero);
+//        llBottom.startAnimation(animation);
     }
 
     @OnClick(R.id.ll_bottom)
     public void onClick() {
-        animation=AnimationUtils.loadAnimation(this,R.anim.all_degree);
+        animation = AnimationUtils.loadAnimation(this, R.anim.all_degree);
         llBottom.startAnimation(animation);
         animation.setAnimationListener(animationListener);
 //
     }
-    Animation.AnimationListener animationListener=new Animation.AnimationListener() {
+
+    Animation.AnimationListener animationListener = new Animation.AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
 
