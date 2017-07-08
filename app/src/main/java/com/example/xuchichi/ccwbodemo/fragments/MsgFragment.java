@@ -3,7 +3,9 @@ package com.example.xuchichi.ccwbodemo.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -17,6 +19,7 @@ import com.example.xuchichi.ccwbodemo.model.MsgListInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -24,7 +27,7 @@ import butterknife.InjectView;
 /**
  * A fragment with a Google +1 button.
  */
-public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment {
+public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragment implements View.OnTouchListener{
 
     List<MsgListInfo> list = new ArrayList<>();
     @InjectView(R.id.listview)
@@ -67,23 +70,35 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
     @Override
     protected void initView(View view) {
         initData();
-        initAdapter();
         addHead();
+        addFooter();
+        initAdapter();
+
     }
 
     public void initAdapter() {
         listview.setOnScrollListener(onScrollListener);
-        adapter=new MyListAdapter<>(getContext(),R.layout.item_msg, BR.msgInfo,list);
+        listview.setOnTouchListener(this);
+        adapter = new MyListAdapter<>(getContext(), R.layout.item_msg, BR.msgInfo, list);
         listview.setAdapter(adapter);
     }
-    ProgressBar progressBar;
+
+    ProgressBar progressBar, progressBar2;
 
     public void addHead() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_progress, null);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         listview.addHeaderView(view);
+        headHeight=view.getMeasuredHeight();
     }
-    Handler handler=new Handler();
+
+    public void addFooter() {
+        View view2 = LayoutInflater.from(getContext()).inflate(R.layout.layout_progress, null);
+        progressBar2 = (ProgressBar) view2.findViewById(R.id.progressBar);
+        listview.addFooterView(view2);
+    }
+
+    Handler handler = new Handler();
 
     AbsListView.OnScrollListener onScrollListener = new AbsListView.OnScrollListener() {
         @Override
@@ -105,24 +120,55 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
         public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
             if (firstVisibleItem > lastFirstVisibleItem) {//上拉
-
             }
-            if (firstVisibleItem < lastFirstVisibleItem) {//下拉
-                progressBar.setVisibility(View.VISIBLE);
+            if (firstVisibleItem <lastFirstVisibleItem) {//下拉
+//                progressBar.setVisibility(View.VISIBLE);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         progressBar.setVisibility(View.GONE);
                     }
-                },3000);
+                }, 3000);
             }
             if (visibleItemCount + firstVisibleItem == totalItemCount) {//滑动到底部
-
+                progressBar2.setVisibility(View.VISIBLE);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar2.setVisibility(View.GONE);
+                    }
+                }, 3000);
             }
             lastFirstVisibleItem = firstVisibleItem;
 
         }
     };
+    int downY,moveY;
+    int headHeight;
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                downY= (int) event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                moveY= (int) event.getRawY();
+                if(moveY-downY>headHeight){
+                    progressBar.setVisibility(View.VISIBLE);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                            listview.setPadding(0,0,0,0);
+                        }
+                    }, 3000);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        return false;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
