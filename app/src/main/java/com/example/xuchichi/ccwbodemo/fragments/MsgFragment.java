@@ -122,7 +122,7 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
             if (firstVisibleItem > lastFirstVisibleItem) {//上拉
             }
             if (firstVisibleItem <lastFirstVisibleItem) {//下拉
-//                progressBar.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -159,7 +159,6 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
                         @Override
                         public void run() {
                             progressBar.setVisibility(View.GONE);
-                            listview.setPadding(0,0,0,0);
                         }
                     }, 3000);
                 }
