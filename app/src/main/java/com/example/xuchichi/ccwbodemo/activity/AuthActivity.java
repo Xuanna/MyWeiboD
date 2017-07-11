@@ -100,6 +100,8 @@ public class AuthActivity extends BaseActivity {
             UserInfo userInfo = gson.fromJson(str, UserInfo.class);
             UserInfoUtil.saveUserInfo(userInfo);
             startActivity(new Intent(AuthActivity.this, MainActivity.class));
+
+            UserInfoUtil.savaAccesToken(userInfo.accessToken);
             Log.e("complete", str);
         }
 

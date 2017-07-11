@@ -1,5 +1,7 @@
 package com.example.xuchichi.ccwbodemo.utils;
 
+import android.text.TextUtils;
+
 import com.example.xuchichi.ccwbodemo.Myapplication;
 import com.example.xuchichi.ccwbodemo.model.UserInfo;
 
@@ -16,6 +18,20 @@ public class UserInfoUtil {
         Myapplication.getInstance().perferencesUtil.setShareString("SAVE_USER",json);
     }
 
+    /**
+     * 保存Token
+     * @param accessToken
+     */
+    public static  void savaAccesToken(String accessToken){
+        Myapplication.getInstance().perferencesUtil.setShareString("access_token",accessToken);
+    }
+    /**
+     *获取Token
+     */
+    public static String  getAccesToken(){
+        String token=Myapplication.getInstance().perferencesUtil.getShareString("access_token");
+        return token;
+    }
     /**
      * 获取用户信息
      * @return

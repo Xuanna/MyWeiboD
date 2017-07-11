@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import okhttp3.OkHttpClient;
 
 /**
  * A fragment with a Google +1 button.
@@ -39,7 +40,9 @@ public class MsgFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragmen
     protected int getLayout() {
         return R.layout.fragment_msg;
     }
+    public void getMsgData(){
 
+    }
     public void initData() {
         MsgListInfo msgListInfo = new MsgListInfo("新浪新闻", "罗晋录节目唐嫣叮嘱一句撒娇的小委屈亮了", "10", "12:12");
         MsgListInfo msgListInfo1 = new MsgListInfo("追剧大咖", "谢谢关注!看剧私信剧名即可,第一时间更新剧集!剧评、剧探、剧时尚！", "0", "11:50");

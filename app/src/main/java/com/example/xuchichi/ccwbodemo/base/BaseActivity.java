@@ -35,6 +35,7 @@ public class BaseActivity extends AppCompatActivity {
     public SharePerferencesUtil mSpUtil;
     public OkHttpClient okHttpClient;
     CommonUtil commonUtil;
+    public static Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void init() {
+        context=this;
         okHttpClient = new OkHttpClient();
 //        Window window = getWindow();
 //        window.requestFeature(Window.FEATURE_NO_TITLE);
