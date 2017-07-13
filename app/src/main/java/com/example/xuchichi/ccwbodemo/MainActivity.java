@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -12,14 +13,20 @@ import com.example.xuchichi.ccwbodemo.activity.MainCenterActivity;
 import com.example.xuchichi.ccwbodemo.adapter.ViewpagerAdapter;
 import com.example.xuchichi.ccwbodemo.base.BaseActivity;
 import com.example.xuchichi.ccwbodemo.base.BaseFragment;
+import com.example.xuchichi.ccwbodemo.callback.StringDialogCallback;
 import com.example.xuchichi.ccwbodemo.fragments.FindFragment;
 import com.example.xuchichi.ccwbodemo.fragments.MineFragment;
 import com.example.xuchichi.ccwbodemo.fragments.MsgFragment;
 import com.example.xuchichi.ccwbodemo.fragments.WeiboFragment;
+import com.example.xuchichi.ccwbodemo.utils.OkLogger;
+import com.example.xuchichi.ccwbodemo.utils.UserInfoUtil;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.model.Response;
 import com.umeng.socialize.UMShareAPI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -56,6 +63,7 @@ public class MainActivity extends BaseActivity {
         ViewpagerAdapter adapter=new ViewpagerAdapter(getSupportFragmentManager(),list);
         viewpager.setAdapter(adapter);
         viewpager.setCurrentItem(0,false);
+
     }
     @OnClick({R.id.ll_weibo, R.id.ll_msg, R.id.center, R.id.ll_find, R.id.ll_mine})
     public void onClick(View view) {

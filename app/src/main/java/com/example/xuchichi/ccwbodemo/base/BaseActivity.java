@@ -35,7 +35,7 @@ public class BaseActivity extends AppCompatActivity {
     public SharePerferencesUtil mSpUtil;
     public OkHttpClient okHttpClient;
     CommonUtil commonUtil;
-    public static Context context;
+    public static Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class BaseActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+        mContext = CommonUtil.getInstance().getContext();
         aCache = ACache.get(this);
         mSpUtil = Myapplication.getInstance().perferencesUtil;
         Myapplication.getInstance().addActivity(this);
@@ -55,7 +56,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void init() {
-        context=this;
         okHttpClient = new OkHttpClient();
 //        Window window = getWindow();
 //        window.requestFeature(Window.FEATURE_NO_TITLE);

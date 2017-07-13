@@ -1,5 +1,6 @@
 package com.example.xuchichi.ccwbodemo.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,6 +22,7 @@ public abstract class BaseFragment extends Fragment {
     protected  abstract void initView(View view);
     View rootView;
     Context mContext;
+    BaseActivity baseActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,4 +54,14 @@ public abstract class BaseFragment extends Fragment {
             loadData();
         }
     }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            baseActivity = (BaseActivity) activity;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
