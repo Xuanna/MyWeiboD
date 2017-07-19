@@ -52,7 +52,7 @@ public class WeiboFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragm
                 .tag(this)
                 .params("access_token", UserInfoUtil.getAccesToken())
                 .params("count", 1)
-                .execute(new StringDialogCallback(getActivity()) {
+                .execute(new StringDialogCallback(getContext()) {
                     @Override
                     public void onSuccess(Response<String> response) {
                         weiboInfo=new Gson().fromJson(response.toString(),ListNewWeiboInfo.class);
@@ -71,7 +71,7 @@ public class WeiboFragment extends com.example.xuchichi.ccwbodemo.base.BaseFragm
     @Override
     public void loadData() {
         super.loadData();
-        myFolloWList();
+//        myFolloWList();
     }
 
     @Override

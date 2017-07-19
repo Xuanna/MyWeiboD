@@ -17,6 +17,7 @@ package com.example.xuchichi.ccwbodemo.callback;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.util.Log;
 import android.view.Window;
 
@@ -36,8 +37,8 @@ public abstract class StringDialogCallback extends StringCallback {
 
     private ProgressDialog dialog;
 
-    public StringDialogCallback(Activity activity) {
-        dialog = new ProgressDialog(activity);
+    public StringDialogCallback(Context context) {//Activity activity
+        dialog = new ProgressDialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

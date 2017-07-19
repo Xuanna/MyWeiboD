@@ -50,9 +50,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
-        initViewpager();
+        setContentView(R.layout.layout_scrollline);
+//        setContentView(R.layout.activity_main);
+//        ButterKnife.inject(this);
+//        initViewpager();
     }
     public void initViewpager(){
         List<BaseFragment> list=new ArrayList<>();
